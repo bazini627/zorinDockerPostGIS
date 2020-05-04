@@ -94,7 +94,7 @@ Flags:
 ### Startup the new Docker container from your downloaded image
 `docker run --rm --name <name for your container> -e POSTGRES_PASSWORD=<password> -d -p 5432:5432 -v $HOME/docker/volumes/postgres:/var/lib/postgresql/data geographica/postgis:latest`
 
-You can also add this command to an alias in your `.bashrc` file so you don't have to remember this insanely long command each time you want to run you container.  Would be something like `alias pg-docker='docker run --rm --name <name for your container> -e POSTGRES_PASSWORD=<password> -d -p 5432:5432 -v $HOME/docker/volumes/postgres:/var/lib/postgresql/data geographica/postgis:latest' 
+You can also add this command to an alias in your `.bashrc` file so you don't have to remember this insanely long command each time you want to run you container.  Would be something like `alias pg-docker='docker run --rm --name <name for your container> -e POSTGRES_PASSWORD=<password> -d -p 5432:5432 -v $HOME/docker/volumes/postgres:/var/lib/postgresql/data geographica/postgis:latest` 
 
 Flags:  
 `--rm`  Removes the container and its file system once container has been shutdown. It's generally regarded as good practice to pass this flag and if data needs to be persisten the `--v` flag can be passed.  
