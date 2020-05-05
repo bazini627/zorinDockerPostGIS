@@ -104,6 +104,26 @@ Flags:
 `-p` Bind port on local host to port in container.  So in this instance port 5432 on local host is bound to 5432 of the container.  Port 5432 should be available on your local host but may not be if you're already running a PostgreSQL instance.  You can use something like `-p 5433:5432` if this is the case.  
 `-v` Mount the newly created `$HOME/docker/volumes/postgres` dir to the /`var/lib/postgresql/data` dir of the container so the data is persistent.  
 
+### A docker compose file can also be used instead of using the above command or adding it to an alias
+- Install `docker-compose` with `sudo apt install docker-compose` if not already installed
+- Create a `docker-compose.yml` file with the text below
+
+```
+version: "3.2"
+services:
+    gisdata:
+     image: geographica/postgis
+     ports:
+      - "5432:5432"
+     volumes:
+      - type: bind
+        source: $HOME/docker/volumes/postgres
+        target: /var/lib/postgresql/data
+     environment:
+        POSTGRES_PASSWORD: '<password>'
+```
+- Run `docker-compose up -d` within the directory where the compose file is located to start the container  
+
 ### Determine IP of your container so you can connect to it with [pgAdmin](https://www.pgadmin.org/) or something like [DBeaver](https://dbeaver.io/).  Depends on your preference if you want a stand-alone desktop application (DBeaver) or one that lanuches in a browser (pgAdmin)
 `docker inspect -f '{{range .NetworkSettings.Networks}}{{.IPAddress}}{{end}}' pg-docker`
 
