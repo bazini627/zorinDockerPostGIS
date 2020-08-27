@@ -69,7 +69,7 @@ May 31 17:43:31 <youruser> dockerd[8324]: time="2020-05-03T17:43:31.821129140-07
 ### Add your user to the Docker group to avoid having to use `sudo` each time with Docker
 `sudo usermod -aG docker ${USER}`
 
-### Confirm that your user is part of the Docker group
+### Confirm that your user is part of the Docker group.  May need to logout or reboot
 `id -nG`
 
 Flags:  
@@ -83,7 +83,7 @@ Output:
 `docker pull geographica/postgis`
 
 ### Check and make sure the above is in your Docker images
-`docker images ls`
+`docker images list`
 
 ### Create a data directory for your container so the data is persistent (othewise data is lost once the container is shutdown)
 `mkdir -p $HOME/docker/volumes/postgres`
